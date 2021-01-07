@@ -9,10 +9,31 @@
 
 <%= form_with model: @user do |f| %>
   <%= f.label :username, 'Username:' %><br>
+   <% if @user.errors[:username].any? %>
+    <ul>
+    <% @user.errors[:username].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %><br>
   <%= f.text_field :username %><br><br>
   <%= f.label :email, 'Email:' %><br>
+  <% if @user.errors[:email].any? %>
+    <ul>
+    <% @user.errors[:email].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %><br>
   <%= f.email_field :email, placeholder: 'example@example.com' %><br><br>
   <%= f.label :password, 'Password:' %><br>
+  <% if @user.errors[:password].any? %>
+    <ul>
+    <% @user.errors[:password].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %><br>
   <%= f.password_field :password %><br><br>
   <%= f.submit %>
 <% end %>
